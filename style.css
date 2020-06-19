@@ -1,0 +1,8 @@
+#download {
+  display: none;
+}
+
+#download a {
+  text-decoration: none;
+  color: inherit;
+}
