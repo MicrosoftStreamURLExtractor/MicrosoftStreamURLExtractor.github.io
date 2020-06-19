@@ -36,7 +36,7 @@ function extractUrls(text, prefix){
 function showUrls(urls, element) {
 
   urls.forEach(function(item) {
-    $(element).append(`<li><a href="#">${item}</a></li>`);
+    $(element).append(`<li><a href="${item}">${item}</a></li>`);
   });
 
 }
