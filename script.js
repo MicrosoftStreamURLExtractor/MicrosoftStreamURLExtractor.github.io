@@ -1,8 +1,9 @@
 
   $(document).on("change", ".file-container #file", function () {
     let input_encoded, input_decoded, reader;
-    let prefix = "https://web.microsoftstream.com"
-    let output_element = $(".output-container #output")
+    let prefix = "https://web.microsoftstream.com";
+    let output_element = $(".output-container #output");
+
     reader = new FileReader();
     reader.onload = function(){
       input_encoded =  reader.result;
@@ -35,7 +36,7 @@ function extractUrls(text, prefix){
 function showUrls(urls, element) {
 
   urls.forEach(function(item) {
-    $(element).append(`<li><a href="#">${item}</a></li>`)
+    $(element).append(`<li><a href="#">${item}</a></li>`);
   });
 
 }
