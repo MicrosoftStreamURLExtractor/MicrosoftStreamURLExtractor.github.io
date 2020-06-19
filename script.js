@@ -52,6 +52,11 @@ function extractUrls(text, prefix){
 
 function showUrls(urls, element) {
   if (urls.length > 0) {
+    if (urls.length > 1) {
+      $(element).append(`<span id="found">Sono stati trovati ${urls.length} link nel file:</span>`);
+    } else {
+      $(element).append(`<span id="found">È stato trovato 1 link nel file:</span>`);
+    }
     urls.forEach(function(item) {
       $(element).append(`<li id="link"><a href="${item}">${item}</a></li>`);
     });
