@@ -36,7 +36,7 @@
         </p>
         <div class="file-container">
            <label for="file" class="custom-file-upload">
-           <i class="fa fa-cloud-upload" aria-hidden="true"></i>Carica file HTML
+           Carica file HTML
            </label>
            <input type="file" size="100" id="file" accept="text/html, .txt"/>
            <a href="#" id="filedownload" active="false">
@@ -60,12 +60,17 @@
            di Github Pages, <a href="https://github.com/5N44P/streams-url-extractor">sorgenti qui</a>. Scrivere HTML fa schifo,
            finita la sessione ricordatemi di cercare un convertitore da markdown a html col mio css. <br>
         </p>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="uselessdonationbutton"> <input type="hidden" name="cmd" value="_donations" />
-           <input type="hidden" name="business" value="NE5B3MM8GEAXA" />
-           <input type="hidden" name="currency_code" value="EUR" />
-           Rimborsatemi i 5€ su PayPal
-           <img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1" />
-        </form>
+
+
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_donations" />
+                <input type="hidden" name="business" value="NE5B3MM8GEAXA" />
+                <input type="hidden" name="currency_code" value="EUR" />
+                <label for="nobodydonates" class="uselessdonationbutton">
+                Rimborsami i 5€ su PayPal
+                </label>
+                <input type="image" style="display:none" id="nobodydonates" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                </form>
      </body>
 
 </html>

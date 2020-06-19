@@ -32,6 +32,19 @@ input[type="file"] {
 	color: #fafafa;
 	font-family: sans-serif;
 }
+.uselessdonationbutton {
+	font-size: 16px;
+	text-align: center;
+	border: double #fafafa;
+	background-color: #444;
+	border-radius: 5px;
+	display: inline-block;
+	padding: 4px 12px;
+	align-items: center;
+	cursor: pointer;
+	color: #fafafa;
+	font-family: sans-serif;
+}
 
 [active|="false"] {
   background-color: #bbb;
@@ -55,20 +68,6 @@ p.endpage {
 	font-size: 16px;
 }
 
-form.uselessdonationbutton {
-	font-size: 16px;
-	text-align: center;
-	border: double #fafafa;
-	background-color: #444;
-	border-radius: 5px;
-	display: inline-block;
-	padding: 6px 25px;
-	align-items: center;
-	cursor: pointer;
-	color: #fafafa;
-	font-family: sans-serif;
-}
-
 code {
 	padding: .2em .4em;
 	margin: 0;
@@ -76,4 +75,10 @@ code {
 	background-color: rgba(27, 31, 35, .05);
 	border-radius: 6px;
 	font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+}
+
+pre.linklist{
+	background-color: #f0f0f0;
+	user-select: contain;
+	overflow-x: scroll;
 }
