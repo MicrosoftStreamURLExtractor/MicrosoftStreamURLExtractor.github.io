@@ -3,28 +3,32 @@
     let input_encoded, input_decoded, reader;
     let prefix = "https://web.microsoftstream.com";
     let output_element = $(".output-container #output");
-    let download_button = $(".output-container #download");
-    let download_file = $(".output-container #filedownload")
+    let download_file = $("a#filedownload")
+    let filename;
 
     reader = new FileReader();
     reader.onload = function(){
+
       input_encoded =  reader.result;
       input_decoded = atob(input_encoded.split(",")[1]);
       urls = extractUrls(input_decoded, prefix);
-      cleanUrls(output_element, download_button);
-      showUrls(urls, output_element, download_button);
+      cleanUrls(output_element, download_file);
+      showUrls(urls, output_element);
       if (urls.length > 0) {
-        attachDownload(urls, download_file);
+        attachDownload(urls, download_file, filename);
       }
     };
 
     reader.readAsDataURL($(this).prop('files')[0]);
+    filename = $(this).prop('files')[0].name.split(".")[0];
+
 });
 
 
-function cleanUrls(element, button) {
+function cleanUrls(element, download) {
   $(element).text("");
-  $(button).css("display", "none");
+  $(download).attr({"href": "", "download": "", "active": "false"});
+  $(download).children().attr({"active": "false"});
 }
 
 
@@ -46,28 +50,27 @@ function extractUrls(text, prefix){
 }
 
 
-function showUrls(urls, element, button) {
+function showUrls(urls, element) {
   if (urls.length > 0) {
     urls.forEach(function(item) {
       $(element).append(`<li id="link"><a href="${item}">${item}</a></li>`);
     });
-    $(button).css("display", "block");
   } else {
-    $(element).append(`<li id="notfound">No links found in file</li>`);
+    $(element).append('<li id="notfound">Non sono stati trovati link nel file!</li>');
   }
 }
 
-function attachDownload(urls, element) {
+function attachDownload(urls, element, filename) {
   let prefix = "data:text/plain;charset=UTF-8,";
+  let suffix = ".txt"
   let output = "";
-  let filename = "microsoft_streams_list.txt";
 
   urls.forEach(function(item) {
     output += item + '\n';
   });
 
 
-  $(element).attr("href", prefix + output);
-  $(element).attr("download", filename);
+  $(element).attr({"href": prefix + output, "download": filename + suffix, "active": "true"});
+  $(element).children().attr({"active": "true"});
 
 }

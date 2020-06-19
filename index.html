@@ -11,16 +11,61 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+        <header>
+           <h1>Microsoft Stream url extractor</h1>
+           <aside><em>Let me do the work</em></aside>
+        </header>
+        <p>Chi ha utilizato <a href="https://github.com/sup3rgiu/PoliDown">PoliDown</a> cercando di scaricare un intero corso
+           sa quanto può essere tedioso raccogliere i link di tutte le lezioni.
+        </p>
+        <p>
+        <h3>Ma i tempi duri sono finiti</h3>
+        Ora puoi, dopo aver fatto caricare a Stream tutti i link scorrendo verso il
+        basso finché finiscono, salvare la pagina in HTML e caricarla qui per ottenere
+        la lista dei link ai video presente in quella pagina.
+        </p>
+        <p>
+           Ricapitolando:
+        <ol>
+           <li> Cerca il corso o il docente di cui vuoi scaricare tutti i video
+           <li> Scorri tutta la pagina, in modo che si carichino tutte <em>(ma proprio tutte)</em> le anteprime
+           <li> Fai <code>Tasto destro</code> &#8594; <code>Salva con nome...</code> e salvati il file HTML da qualche parte
+           <li> Torna qui e caricalo qua sotto
+           <li> Scarica il file <code>.txt</code> e dallo in pasto a PoliDown
+        </ol>
+        </p>
+        <div class="file-container">
+           <label for="file" class="custom-file-upload">
+           <i class="fa fa-cloud-upload" aria-hidden="true"></i>Carica file HTML
+           </label>
+           <input type="file" size="100" id="file" accept="text/html, .txt"/>
+           <a href="#" id="filedownload" active="false">
+           <label class="custom-file-download" active="false">
+           Scarica file <code>.txt</code>
+           </label>
+           </a>
+        </div>
+        <div class="output-container">
+           <ul id="output">
+           </ul>
+        </div>
+        <hr>
+        <p class="endpage">
+           Questa pagina è ispirata da  <a href="http://bettermotherfuckingwebsite.com/">questo sito</a>
+           di <a href="https://twitter.com/drew_mc">questo tizio</a> che l'ha fatta con l'aiuto di <a href="https://twitter.com/gabehammersmith">quest'altro tizio</a>.
+           <br><br><a href="https://github.com/5N44P">Io</a> ho espanso un po' il loro CSS e l'ho
+           modifcata per ospitare l'estrattore di file di stream che ha scritto
+           <a href="https://github.com/lorossi">lui</a> dopo avergli allungato 5€ e pezzi di codice forse
+           ispirandomi al <a href="https://github.com/sup3rgiu/PoliDown/pull/23">suo</a> codice. Il tutto a spese dell'hosting
+           di Github Pages, <a href="https://github.com/5N44P/streams-url-extractor">sorgenti qui</a>. Scrivere HTML fa schifo,
+           finita la sessione ricordatemi di cercare un convertitore da markdown a html col mio css. <br>
+        </p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="uselessdonationbutton"> <input type="hidden" name="cmd" value="_donations" />
+           <input type="hidden" name="business" value="NE5B3MM8GEAXA" />
+           <input type="hidden" name="currency_code" value="EUR" />
+           Rimborsatemi i 5€ su PayPal
+           <img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+     </body>
 
-  <div class="file-container">
-        <input type="file" id="file" accept="text/html, .txt"/>
-  </div>
-
-  <div class="output-container">
-      <ul id="output">
-      </ul>
-      <button type="button" id="download"><a href="#" id="filedownload">Download lista file(formato .txt)</a></button>
-  </div>
-
-  </body>
 </html>
