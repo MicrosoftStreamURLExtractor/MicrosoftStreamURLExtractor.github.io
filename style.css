@@ -38,6 +38,10 @@ input[type="file"] {
   pointer-events: none;
 }
 
+.linklist {
+  user-select: contain;
+}
+
 a {
 	color: hotpink;
 }
