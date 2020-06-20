@@ -76,7 +76,7 @@ function attachDownload(urls, element, filename) {
     let output = "";
 
     urls.forEach(function(item) {
-        output += item + '\n';
+        output += item + '\r' + '\n';
     });
 
 
