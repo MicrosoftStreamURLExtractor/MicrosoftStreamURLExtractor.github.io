@@ -1,78 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Microsoft Stream url extractor</title>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-      crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-        <header>
-           <h1>Microsoft Stream url extractor</h1>
-           <aside><em>Let me do the work</em></aside>
-        </header>
-        <p>Chi ha utilizato <a href="https://polinetwork.github.io/it/projects/polidown/">PoliDown</a> cercando di scaricare un intero corso
-           sa quanto può essere tedioso raccogliere i link di tutte le lezioni.
-        </p>
-        <p>
-        <h3>Ma i tempi duri sono finiti</h3>
-        Ora puoi salvare la pagina in HTML e caricarla qui per ottenere
-        la lista dei link ai video presente in quella pagina.
-        </p>
-        <p>
-           Passo per passo:
-        <ol>
-           <li> Cerca il corso o il docente di cui vuoi scaricare tutti i video
-           <li> Scorri tutta la pagina, in modo che si carichino tutte <em>(ma proprio tutte)</em> le anteprime
-           <li> Fai <code>Tasto destro</code> &#8594; <code>Salva con nome...</code> e salvati il file HTML da qualche parte
-           <li> Torna qui e caricalo qua sotto
-           <li> Scarica il file <code>.txt</code> e dallo in pasto a PoliDown
-        </ol>
-        </p>
-        <div class="file-container">
-           <label for="file" class="custom-file-upload">
-           Carica file HTML
-           </label>
-           <input type="file" size="100" id="file" accept="text/html, .txt"/>
-           <a href="#" id="filedownload" active="false">
-           <label class="custom-file-download" active="false">
-           Scarica file <code>.txt</code>
-           </label>
-           </a>
-        </div>
-        <div class="output-container">
-          <p class="summary">
-            Carica un file per iniziare.
-          </p>
-           <pre class="linklist">
-           </pre>
-        </div>
-        <hr>
-        <p class="endpage">
-           Questa pagina è ispirata da  <a href="http://bettermotherfuckingwebsite.com/">questo sito</a>
-           di <a href="https://twitter.com/drew_mc">questo tizio</a> che l'ha fatta con l'aiuto di <a href="https://twitter.com/gabehammersmith">quest'altro tizio</a>.
-           <br><br>Io (<a href="https://github.com/valerionew">valerionew</a>) ho espanso un po' il loro CSS e l'ho
-           modifcata per ospitare l'estrattore di file di stream che ha scritto
-           <a href="https://github.com/lorossi">lorossi</a> dopo avergli allungato 5€ e pezzi di codice forse
-           ispirandomi al <a href="https://github.com/sup3rgiu/PoliDown/pull/23">suo</a> codice. Il tutto a spese dell'hosting
-           di Github Pages, <a href="https://github.com/MicrosoftStreamURLExtractor/MicrosoftStreamURLExtractor.github.io">sorgenti qui</a>. Scrivere HTML fa schifo,
-           finita la sessione ricordatemi di cercare un convertitore da markdown a html col mio css. <br>
-        </p>
+<head>
+  <meta charset="utf-8">
+  <title>Microsoft Stream url extractor</title>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header>
+     <h1>Microsoft Stream url extractor</h1>
+     <aside><em>Let me do the work</em></aside>
+  </header>
+  <p>Chi ha utilizato <a href="https://polinetwork.github.io/it/projects/polidown/">PoliDown</a> cercando di scaricare un intero corso
+     sa quanto può essere tedioso raccogliere i link di tutte le lezioni.
+  </p>
+  <h3>Ma i tempi duri sono finiti</h3>
+  <p> PoliDown è un software che permette di scaricare i video delle
+    lezioni del Politecnico di Milano dal sito di Microsoft Stream da cui
+    sono erogati.
+    Purtroppo PoliDown accetta in ingresso o i link singoli o una lista di
+    link (uno per linea), in un file <code>.txt</code>.
+  </p>
+  <p>
+     Con <b>Microsoft Stream URL Extractor</b> puoi cercare il docente o il corso che ti interessa con la ricerca
+  di Microsoft Stream, salvare la pagina in HTML e caricarla qui per ottenere
+  la lista dei link ai video presente in quella pagina in <code>.txt</code> da usare con PoliDown.
+  </p>
+  <p>
+     Passo per passo:
+  <ol>
+     <li> Cerca il corso o il docente di cui vuoi scaricare tutti i video
+     <li> Scorri tutta la pagina, in modo che si carichino tutte <em>(ma proprio tutte)</em> le anteprime
+     <li> Fai <code>Tasto destro</code> &#8594; <code>Salva con nome...</code> e salvati il file HTML da qualche parte
+     <li> Torna qui e caricalo qua sotto
+     <li> Scarica il file <code>.txt</code> e dallo in pasto a PoliDown
+  </ol>
+  </p>
+  <div class="file-container">
+     <label for="file" class="custom-file-upload">
+     Carica file HTML
+     </label>
+     <input type="file" size="100" id="file" accept="text/html, .txt"/>
+     <a href="#" id="filedownload" active="false">
+     <label class="custom-file-download" active="false">
+     Scarica file <code>.txt</code>
+     </label>
+     </a>
+  </div>
+  <div class="output-container">
+    <p class="summary">
+      Carica un file per iniziare.
+    </p>
+     <pre class="linklist">
+     </pre>
+  </div>
+  <hr>
+  <p class="endpage">
+     Questa pagina è ispirata da  <a href="http://bettermotherfuckingwebsite.com/">questo sito</a>
+     di <a href="https://twitter.com/drew_mc">questo tizio</a> che l'ha fatta con l'aiuto di <a href="https://twitter.com/gabehammersmith">quest'altro tizio</a>.
+     <br><br>Io (<a href="https://github.com/valerionew">valerionew</a>) ho espanso un po' il loro CSS e l'ho
+     modifcata per ospitare l'estrattore di file di stream che ha scritto
+     <a href="https://github.com/lorossi">lorossi</a> dopo avergli allungato 5€ e pezzi di codice forse
+     ispirandomi al <a href="https://github.com/sup3rgiu/PoliDown/pull/23">suo</a> codice. Il tutto a spese dell'hosting
+     di Github Pages, <a href="https://github.com/MicrosoftStreamURLExtractor/MicrosoftStreamURLExtractor.github.io">sorgenti qui</a>. Scrivere HTML fa schifo,
+     finita la sessione ricordatemi di cercare un convertitore da markdown a html col mio css. <br>
+  </p>
 
 
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_donations" />
-                <input type="hidden" name="business" value="NE5B3MM8GEAXA" />
-                <input type="hidden" name="currency_code" value="EUR" />
-                <label for="nobodydonates" class="uselessdonationbutton">
-                Rimborsami i 5€ su PayPal
-                </label>
-                <input type="image" style="display:none" id="nobodydonates" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-                </form>
-     </body>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="NE5B3MM8GEAXA" />
+    <input type="hidden" name="currency_code" value="EUR" />
+    <label for="nobodydonates" class="uselessdonationbutton">
+    Rimborsami i 5€ su PayPal
+    </label>
+    <input type="image" style="display:none" id="nobodydonates" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+  </form>
+</body>
 
 </html>
