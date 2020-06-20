@@ -66,6 +66,7 @@ div.file-container {
 p.endpage {
 	font-style: italic;
 	font-size: 16px;
+	text-align: justify;
 }
 
 code {
