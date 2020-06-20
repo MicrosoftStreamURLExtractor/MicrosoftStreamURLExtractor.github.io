@@ -1,9 +1,9 @@
 $(document).on("change", ".file-container #file", function() {
     let input_encoded, input_decoded, reader;
     let prefix = "https://web.microsoftstream.com";
-    let output_element = $(".output-container .linklist");
-    let summary_element = $(".output-container .summary");
-    let download_file = $("a#filedownload")
+    let output_element = $(".output-container .linklist"); // list of links
+    let summary_element = $(".output-container .summary"); // how many links have been found
+    let download_file = $(".file-container a#filedownload") // download link
     let filename;
 
     reader = new FileReader();
@@ -46,6 +46,7 @@ function cleanUrls(element, download, summary) {
         "download": "",
         "active": "false"
     });
+
     // download label
     $(download).children().attr({
         "active": "false"
@@ -107,7 +108,7 @@ function attachDownload(urls, element, filename) {
 
     // download button
     $(element).attr({
-        "href": prefix + output_ecoded,
+        "href": prefix + output_encoded,
         "download": filename + filetype,
         "active": "true"
     });
