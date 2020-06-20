@@ -1,1 +1,1 @@
-# https://microsoftstreamurlextractor.github.io/index.html
+# https://microsoftstreamurlextractor.github.io/
