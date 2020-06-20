@@ -2,6 +2,7 @@ $(document).on("change", ".file-container #file", function() {
     let input_encoded, input_decoded, reader;
     let prefix = "https://web.microsoftstream.com";
     let output_element = $(".output-container .linklist");
+    let summary_element = $(".output-container .summary");
     let download_file = $("a#filedownload")
     let filename;
 
@@ -14,9 +15,9 @@ $(document).on("change", ".file-container #file", function() {
         // extract urls
         urls = extractUrls(input_decoded, prefix);
         // clean urls containers in page
-        cleanUrls(output_element, download_file);
+        cleanUrls(output_element, download_file, summary_element);
         // show urls on container
-        showUrls(urls, output_element);
+        showUrls(urls, output_element, summary_element);
         if (urls.length > 0) {
           // if we found any urls, format all the links
             attachDownload(urls, download_file, filename);
@@ -30,13 +31,16 @@ $(document).on("change", ".file-container #file", function() {
 });
 
 
-function cleanUrls(element, download) {
+function cleanUrls(element, download, summary) {
     // clean output containers from link
 
-    //link list
+    // link list
     $(element).text("");
 
-    // donwload button
+    // p containing the number of found links
+    $(summary).text("");
+
+    // download button
     $(download).attr({
         "href": "",
         "download": "",
@@ -70,20 +74,20 @@ function extractUrls(text, prefix) {
 }
 
 
-function showUrls(urls, element) {
+function showUrls(urls, element, summary) {
   // shows url list in output
     if (urls.length > 0) {
         if (urls.length > 1) {
-            $(element).append(`<span id="found">Sono stati trovati ${urls.length} link nel file:</span><br>`);
+            $(summary).append(`Sono stati trovati ${urls.length} link nel file:`);
         } else {
-            $(element).append(`<span id="found">È stato trovato 1 link nel file:</span>`);
+            $(summary).text(`È stato trovato 1 link nel file:`);
         }
 
         urls.forEach(function(item) {
             $(element).append(`<span id="link"><a href="${item}">${item}</a></span><br>`);
         });
     } else {
-        $(element).append('<span id="notfound">Non sono stati trovati link nel file!</span>');
+        $(summary).append('Non sono stati trovati link nel file!');
     }
 }
 
@@ -92,22 +96,22 @@ function attachDownload(urls, element, filename) {
     let prefix = "data:text/plain;base64,";
     let filetype = ".txt";
     let output = "";
-    let output_ecoded;
+    let output_encoded;
 
     urls.forEach(function(item) {
         output += item + '\n';
     });
 
     // base64 encoding because firefox doesn't like plaintext
-    output_ecoded = btoa(output);
+    output_encoded = btoa(output);
 
-    // donwload button
+    // download button
     $(element).attr({
         "href": prefix + output_ecoded,
         "download": filename + filetype,
         "active": "true"
     });
-    // donwload label
+    // download label
     $(element).children().attr({
         "active": "true"
     });
