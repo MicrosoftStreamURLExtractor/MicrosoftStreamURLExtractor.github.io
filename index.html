@@ -7,8 +7,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    ga('set', 'anonymizeIp', true);
-    gtag('config', 'UA-170235870-1');
+    gtag('config', 'UA-170235870-1', { 'anonymize_ip': true });
   </script>
 
   <meta charset="utf-8">
@@ -90,6 +89,10 @@
     </label>
     <input type="image" style="display:none" id="nobodydonates" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
   </form>
+    
+    <!-- https://github.com/dobarkod/cookie-banner -->
+<script type="text/javascript" id="cookiebanner"
+  src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js"></script>
 </body>
 
 </html>
