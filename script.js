@@ -100,7 +100,7 @@ function attachDownload(urls, element, filename) {
     let output_encoded;
 
     urls.forEach(function(item) {
-        output += item + '\n';
+        output += item + '\r\n';
     });
 
     // base64 encoding because firefox doesn't like plaintext
