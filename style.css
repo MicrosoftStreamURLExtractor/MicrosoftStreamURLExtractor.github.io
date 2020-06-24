@@ -91,6 +91,7 @@ pre.linklist{
 	width: 100%;
 	background-color: #bbb;
 	border-radius: 3px;
+	display: none;
 }
 
 .progressbar > #inner {
