@@ -63,6 +63,7 @@ a {
 
 div.file-container {
 	margin: auto;
+	text-align: center;
 }
 
 p.endpage {
@@ -88,6 +89,10 @@ pre.linklist{
 }
 
 .progressbar {
+	margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 	width: 100%;
 	background-color: #bbb;
 	border-radius: 3px;
