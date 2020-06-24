@@ -4,10 +4,13 @@ $(document).on("change", ".file-container #file", function() {
     let output_element = $(".output-container .linklist"); // list of links
     let summary_element = $(".output-container .summary"); // how many links have been found
     let download_file = $(".file-container a#filedownload") // download link
+    let bar = $(".progressbar #inner") // loading bar
     let filename;
 
     reader = new FileReader();
     reader.onload = function() {
+      $(bar).css({"width": 0});
+      $(bar).animate({width: "100%"}, 1000, function() {
         // extract the base64 encoded content of the file
         input_encoded = reader.result;
         // decode from base64 and skip the first part, comma separated, containing infos about the file
@@ -22,6 +25,7 @@ $(document).on("change", ".file-container #file", function() {
           // if we found any urls, format all the links
             attachDownload(urls, download_file, filename);
         }
+      })
     };
 
     // extract file from file container

@@ -85,3 +85,14 @@ pre.linklist{
 	overflow-x: auto;
 	padding: 20px;
 }
+
+.progressbar {
+	width: 100%;
+	background-color: #bbb;
+}
+
+.progressbar > #inner {
+	width: 0%;
+	height: 30px;
+	background-color: hotpink;
+}
