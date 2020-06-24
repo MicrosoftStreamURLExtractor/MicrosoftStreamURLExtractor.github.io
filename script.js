@@ -4,24 +4,31 @@ $(document).on("change", ".file-container #file", function() {
     let output_element = $(".output-container .linklist"); // list of links
     let summary_element = $(".output-container .summary"); // how many links have been found
     let download_file = $(".file-container a#filedownload") // download link
+    let bar = $(".progressbar") // loading bar
     let filename;
 
     reader = new FileReader();
     reader.onload = function() {
+      // clean urls containers in page
+      cleanUrls(output_element, download_file, summary_element);
+
+      $(bar).css({"display": "block"});
+      $(bar).children(":first").css({"width": "0"});
+      $(bar).children(":first").animate({"width": "100%", "display": "inline"}, 700, function() {
+        $(bar).css({"display": "none"});
         // extract the base64 encoded content of the file
         input_encoded = reader.result;
         // decode from base64 and skip the first part, comma separated, containing infos about the file
         input_decoded = atob(input_encoded.split(",")[1]);
         // extract urls
         urls = extractUrls(input_decoded, prefix);
-        // clean urls containers in page
-        cleanUrls(output_element, download_file, summary_element);
         // show urls on container
         showUrls(urls, output_element, summary_element);
         if (urls.length > 0) {
           // if we found any urls, format all the links
             attachDownload(urls, download_file, filename);
         }
+      })
     };
 
     // extract file from file container
@@ -38,7 +45,7 @@ function cleanUrls(element, download, summary) {
     $(element).text("");
 
     // p containing the number of found links
-    $(summary).text("");
+    $(summary).text("Ricerca in corso...");
 
     // download button
     $(download).attr({
@@ -79,7 +86,7 @@ function showUrls(urls, element, summary) {
   // shows url list in output
     if (urls.length > 0) {
         if (urls.length > 1) {
-            $(summary).append(`Sono stati trovati ${urls.length} link nel file:`);
+            $(summary).text(`Sono stati trovati ${urls.length} link nel file:`);
         } else {
             $(summary).text(`È stato trovato 1 link nel file:`);
         }
@@ -88,7 +95,7 @@ function showUrls(urls, element, summary) {
             $(element).append(`<span id="link"><a href="${item}">${item}</a></span><br>`);
         });
     } else {
-        $(summary).append('Non sono stati trovati link nel file!');
+        $(summary).text('Non sono stati trovati link nel file!');
     }
 }
 

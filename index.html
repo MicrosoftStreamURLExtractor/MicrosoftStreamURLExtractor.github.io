@@ -13,8 +13,8 @@
   <meta charset="utf-8">
   <title>Microsoft Stream url extractor</title>
   <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous"></script>
   <script src="script.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -60,6 +60,9 @@
      </label>
      </a>
   </div>
+  <div class="progressbar">
+    <div id="inner"></div>
+  </div>
   <div class="output-container">
     <p class="summary">
       Carica un file per iniziare.
@@ -79,7 +82,7 @@
      finita la sessione ricordatemi di cercare un convertitore da markdown a html col mio css. <br>
   </p>
 
-
+  <div class="donationcontainer">
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_donations" />
     <input type="hidden" name="business" value="NE5B3MM8GEAXA" />
@@ -89,7 +92,12 @@
     </label>
     <input type="image" style="display:none" id="nobodydonates" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
   </form>
-    
+</div>
+  <hr>
+  <p class="endpage">
+    Un ringraziamento speciale a <a href="https://twitter.com/sunflowaer?s=09">giorgia</a>, nostra
+    patron, investor e benefattrice, che per prima ha creduto nel progetto e fatto una donazione
+  </p>
     <!-- https://github.com/dobarkod/cookie-banner -->
 <!--<script type="text/javascript" id="cookiebanner"
   src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js"></script>-->
