@@ -63,7 +63,7 @@ function cleanUrls(element, download, summary) {
 
 function extractUrls(text, prefix) {
     // extracs urls from html text, regex thanks to https://github.com/valerionew
-    let re = /\/playback\/.{36}/g;
+    let re = /\/play(back)?\/.{32}/g;
     let urls = text.match(re);
 
     if (urls === null) {
