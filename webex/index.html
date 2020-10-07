@@ -1,0 +1,106 @@
+PoliWebEx<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170235870-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-170235870-1', { 'anonymize_ip': true });
+  </script>
+  -->
+  <meta charset="utf-8">
+  <title>WebEX url extractor</title>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header>
+     <h1>WebEX url extractor</h1>
+     <aside><em>Let me do the work</em></aside>
+  </header>
+  <p>Chi ha utilizato <a href="" target="_blank">PoliWebEx</a> cercando di scaricare un intero corso
+     sa quanto può essere tedioso raccogliere i link di tutte le lezioni.
+  </p>
+  <h3>Ma i tempi duri sono finiti</h3>
+  <p> PoliWebex è un software che permette di scaricare i video delle
+    lezioni del Politecnico di Milano dalla piattaforma WebEX su cui
+    sono erogati.
+    Purtroppo PoliWebEx accetta in ingresso o i link singoli o una lista di
+    link (uno per linea), in un file <code>.txt</code>.
+  </p>
+  <p>
+     Con <b>WebEx URL Extractor</b> puoi cercare il docente o il corso che ti interessa con la ricerca
+  di WebEx, salvare la pagina in HTML e caricarla qui per ottenere
+  la lista dei link ai video presente in quella pagina in <code>.txt</code> da usare con PoliWebEx.
+  </p>
+  <p>
+     Passo per passo:
+  <ol>
+     <li> Cerca il corso o il docente di cui vuoi scaricare tutti i video
+     <li> Scorri tutta la pagina, in modo che si carichino tutte <em>(ma proprio tutte)</em> le anteprime
+     <li> Fai <code>Tasto destro</code> &rarr; <code>Salva con nome...</code> e salvati il file HTML da qualche parte
+     <li> Torna qui e caricalo qua sotto
+     <li> Scarica il file <code>.txt</code> e dallo in pasto a PoliWebEx
+  </ol>
+  </p>
+  <div class="file-container">
+     <label for="file" class="custom-file-upload">
+     Carica file HTML
+     </label>
+     <input type="file" size="100" id="file" accept="text/html, .txt"/>
+     <a href="#" id="filedownload" active="false">
+     <label class="custom-file-download" active="false">
+     Scarica file <code>.txt</code>
+     </label>
+     </a>
+  </div>
+  <div class="progressbar">
+    <div id="inner"></div>
+  </div>
+  <div class="output-container">
+    <p class="summary">
+      Carica un file per iniziare.
+    </p>
+     <pre class="linklist">
+     </pre>
+  </div>
+  <hr>
+  <p class="endpage">
+     Questa pagina è ispirata da  <a href="http://bettermotherfuckingwebsite.com/">questo sito</a>
+     di <a href="https://twitter.com/drew_mc">questo tizio</a> che l'ha fatta con l'aiuto di <a href="https://twitter.com/gabehammersmith">quest'altro tizio</a>.
+     <br><br>Io (<a href="https://github.com/valerionew">valerionew</a>) ho espanso un po' il loro CSS e l'ho
+     modifcata per ospitare l'estrattore di file di stream che ha scritto
+     <a href="https://github.com/lorossi">lorossi</a> dopo avergli allungato 5€ e pezzi di codice forse
+     ispirandomi al <a href="https://github.com/sup3rgiu/PoliDown/pull/23">suo</a> codice. Il tutto a spese dell'hosting
+     di Github Pages, <a href="https://github.com/MicrosoftStreamURLExtractor/MicrosoftStreamURLExtractor.github.io">sorgenti qui</a>. Scrivere HTML fa schifo,
+     finita la sessione ricordatemi di cercare un convertitore da markdown a html col mio css. <br>
+  </p>
+
+  <div class="donationcontainer">
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="NE5B3MM8GEAXA" />
+    <input type="hidden" name="currency_code" value="EUR" />
+    <label for="nobodydonates" class="uselessdonationbutton">
+    Rimborsami i 5€ su PayPal
+    </label>
+    <input type="image" style="display:none" id="nobodydonates" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+  </form>
+</div>
+  <hr>
+  <p class="endpage">
+    Un ringraziamento speciale a <a href="https://twitter.com/sunflowaer?s=09">giorgia</a>, nostra
+    patron, investor e benefattrice, che per prima ha creduto nel progetto e fatto una donazione
+  </p>
+    <!-- https://github.com/dobarkod/cookie-banner -->
+<!--<script type="text/javascript" id="cookiebanner"
+  src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js"></script>-->
+</body>
+
+</html>
