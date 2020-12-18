@@ -66,23 +66,8 @@ cleanUrls = (element, download, summary) => {
 extractUrls = (text, prefix) => {
     // extracs urls from html text, regex thanks to https://github.com/valerionew
     // multiple patterns, the second one also returns a leading slash
-    let re = [/\/play(back)?\/.{32}/g, /[\/|=]([a-z0-9]{32})/];
-    let urls = [];
-    re.forEach((r, i) => {
-      // we extract all matches
-      let new_urls = text.match(r);
-      if (new_urls) {
-        new_urls.forEach((n, j) => {
-          // some matches may be "null", so we want to filter them out
-          // the second regex (when i == 1) return twice the results. So what
-          //  we do is filter every two matches and filter them out.
-          //  This is kinda hacky, I know.
-          if (n && !(i == 1 && j % 2 == 1)) {
-            urls.push(n);
-          }
-        });
-      }
-    });
+    let re = /[\/|=]([a-z0-9]{32})/g;
+    let urls = text.match(re);
 
     if (urls === null) {
         return [];
