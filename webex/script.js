@@ -1,10 +1,12 @@
+/* jshint esversion: 8 */
+
 $(document).on("change", ".file-container #file", function() {
     let input_encoded, input_decoded, reader;
     let prefix = "https://politecnicomilano.webex.com/recordingservice/sites/politecnicomilano/recording";
     let output_element = $(".output-container .linklist"); // list of links
     let summary_element = $(".output-container .summary"); // how many links have been found
-    let download_file = $(".file-container a#filedownload") // download link
-    let bar = $(".progressbar") // loading bar
+    let download_file = $(".file-container a#filedownload"); // download link
+    let bar = $(".progressbar"); // loading bar
     let filename;
 
     reader = new FileReader();
@@ -14,7 +16,7 @@ $(document).on("change", ".file-container #file", function() {
 
       $(bar).css({"display": "block"});
       $(bar).children(":first").css({"width": "0"});
-      $(bar).children(":first").animate({"width": "100%", "display": "inline"}, 700, function() {
+      $(bar).children(":first").animate({"width": "100%", "display": "inline"}, 700, () => {
         $(bar).css({"display": "none"});
         // extract the base64 encoded content of the file
         input_encoded = reader.result;
@@ -28,7 +30,7 @@ $(document).on("change", ".file-container #file", function() {
           // if we found any urls, format all the links
             attachDownload(urls, download_file, filename);
         }
-      })
+      });
     };
 
     // extract file from file container
@@ -38,7 +40,7 @@ $(document).on("change", ".file-container #file", function() {
 });
 
 
-function cleanUrls(element, download, summary) {
+cleanUrls = (element, download, summary) => {
     // clean output containers from link
 
     // link list
@@ -58,13 +60,29 @@ function cleanUrls(element, download, summary) {
     $(download).children().attr({
         "active": "false"
     });
-}
+};
 
 
-function extractUrls(text, prefix) {
+extractUrls = (text, prefix) => {
     // extracs urls from html text, regex thanks to https://github.com/valerionew
-    let re = /\/play(back)?\/.{32}/g;
-    let urls = text.match(re);
+    // multiple patterns, the second one also returns a leading slash
+    let re = [/\/play(back)?\/.{32}/g, /[\/|=]([a-z0-9]{32})/];
+    let urls = [];
+    re.forEach((r, i) => {
+      // we extract all matches
+      let new_urls = text.match(r);
+      if (new_urls) {
+        new_urls.forEach((n, j) => {
+          // some matches may be "null", so we want to filter them out
+          // the second regex (when i == 1) return twice the results. So what
+          //  we do is filter every two matches and filter them out.
+          //  This is kinda hacky, I know.
+          if (n && !(i == 1 && j % 2 == 1)) {
+            urls.push(n);
+          }
+        });
+      }
+    });
 
     if (urls === null) {
         return [];
@@ -73,16 +91,17 @@ function extractUrls(text, prefix) {
     // we convert the list into a set (and then back) to remove duplicates
     let urls_set = new Set(urls);
     let unique_urls = [];
-    urls_set.forEach(function(item) {
+
+    urls_set.forEach(item => {
         // while reconverting, we add the prefix (the base url)
         unique_urls.push(prefix + item);
     });
 
     return unique_urls;
-}
+};
 
 
-function showUrls(urls, element, summary) {
+showUrls = (urls, element, summary) => {
   // shows url list in output
     if (urls.length > 0) {
         if (urls.length > 1) {
@@ -91,22 +110,22 @@ function showUrls(urls, element, summary) {
             $(summary).text(`È stato trovato 1 link nel file:`);
         }
 
-        urls.forEach(function(item) {
+        urls.forEach(item => {
             $(element).append(`<span id="link"><a href="${item}">${item}</a></span><br>`);
         });
     } else {
         $(summary).text('Non sono stati trovati link nel file!');
     }
-}
+};
 
-function attachDownload(urls, element, filename) {
+attachDownload = (urls, element, filename) => {
     // create downloadable file
     let prefix = "data:text/plain;base64,";
     let filetype = ".txt";
     let output = "";
     let output_encoded;
 
-    urls.forEach(function(item) {
+    urls.forEach(item => {
         output += item + '\r\n';
     });
 
@@ -123,4 +142,4 @@ function attachDownload(urls, element, filename) {
     $(element).children().attr({
         "active": "true"
     });
-}
+};
