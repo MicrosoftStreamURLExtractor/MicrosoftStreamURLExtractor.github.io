@@ -64,7 +64,7 @@ cleanUrls = (element, download, summary) => {
 
 
 extractUrls = (text, prefix) => {
-    // extracs urls from html text, regex thanks to https://github.com/valerionew
+    // extracts urls from html text, regex thanks to https://github.com/valerionew
     // multiple patterns, the second one also returns a leading slash
     let re = /[\/|=]([a-z0-9]{32})/g;
     let urls = text.match(re);
@@ -73,9 +73,17 @@ extractUrls = (text, prefix) => {
         return [];
     }
 
+    // remove the leading = (equal) and replace it with / (slash)
+    for (let i = 0; i < urls.length; i++) {
+      if (urls[i].startsWith("=")) {
+        urls[i] = "/" + urls[i].slice(1);
+      }
+    }
+
     // we convert the list into a set (and then back) to remove duplicates
     let urls_set = new Set(urls);
     let unique_urls = [];
+
 
     urls_set.forEach(item => {
         // while reconverting, we add the prefix (the base url)
